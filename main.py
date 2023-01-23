@@ -1,6 +1,5 @@
 import arxiv
 
-
 class NewsFeed:
     """Get the News"""
 
@@ -24,7 +23,7 @@ class PaperFeed:
 
         for result in search.results():
             print(result.title)
-            print(result.links)
+            print(result.links[0])
 
 
 
