@@ -1,15 +1,5 @@
 import arxiv
 
-class NewsFeed:
-    """Get the News"""
-
-    def __int__(self, data):
-        self.data = data
-
-    def get(self):
-        pass
-
-
 class PaperFeed:
 
     def __init__(self, query, length):
