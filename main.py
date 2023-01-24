@@ -12,8 +12,10 @@ class PaperFeed:
                               sort_by=arxiv.SortCriterion.SubmittedDate)
 
         for result in search.results():
-            print(result.title)
-            print(result.links[0])
+            print(f"Title: {result.title}")
+            print(f"Published Date: {result.published}")
+            print(f"URL: {result.links[0]}")
+
 
 
 
