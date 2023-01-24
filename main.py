@@ -10,11 +10,12 @@ class PaperFeed:
         search = arxiv.Search(query=self.query,
                               max_results= self.length,
                               sort_by=arxiv.SortCriterion.SubmittedDate)
-
+        paper_body = ''
         for result in search.results():
-            print(f"Title: {result.title}")
-            print(f"Published Date: {result.published}")
-            print(f"URL: {result.links[0]}")
+            paper_body = paper_body +  f"Title: {result.title}" + "\n" + f"Published Date: {result.published}" + "\n" + f"URL: {result.links[0]} \n \n"
+
+
+        return paper_body
 
 
 
