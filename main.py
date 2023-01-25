@@ -7,8 +7,7 @@ import time
 
 
 def send_email():
-    email = yagmail.SMTP(user='',
-                         password='')
+    email = email_setting()
     paper_feed = PaperFeed(query=row['interest'], length=10).get_paper()
     email.send(to=row['email'],
                subject=f"Your {row['interest']} paper for today",
@@ -18,6 +17,12 @@ def send_email():
                         f"Happy Reading \n "
                         f"Ayse,"
                )
+
+
+def email_setting():
+    email = yagmail.SMTP(user='',
+                         password='')
+    return email
 
 
 #datetime.datetime.now().hour == 8 and datetime.datetime.now().minute == 18:
