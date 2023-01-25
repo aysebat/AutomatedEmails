@@ -1,25 +1,20 @@
-import arxiv
+from arxiv_file import PaperFeed
+import yagmail
+import pandas as pd
 
-class PaperFeed:
+# read the excel file
+df = pd.read_excel('people.xlsx')
 
-    def __init__(self, query, length):
-        self.query = query
-        self.length = length
+for index, row in df.iterrows():
+    email = yagmail.SMTP(user='',
+                         password='')
 
-    def get_paper(self):
-        search = arxiv.Search(query=self.query,
-                              max_results= self.length,
-                              sort_by=arxiv.SortCriterion.SubmittedDate)
-        paper_body = ''
-        for result in search.results():
-            paper_body = paper_body +  f"Title: {result.title}" + "\n" + f"Published Date: {result.published}" + "\n" + f"URL: {result.links[0]} \n \n"
-
-
-        return paper_body
-
-
-
-
-
-paper = PaperFeed(query="neutrino", length=10)
-print(paper.get_paper())
+    paper_feed = PaperFeed(query=row['interest'], length=10).get_paper()
+    email.send(to=row['email'],
+               subject=f"Your {row['interest']} paper for today",
+               contents=f"Hi {row['name']}, \n \n "
+                        f"See what's on about  {row['interest']} paper today. \n \n "
+                        f"{paper_feed} \n \n "
+                        f"Happy Reading \n "
+                        f"Ayse,"
+               )
