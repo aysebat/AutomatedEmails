@@ -1,5 +1,4 @@
 import datetime
-
 from arxiv_file import PaperFeed
 import yagmail
 import pandas as pd
@@ -15,22 +14,22 @@ def send_email():
                         f"See what's on about  {row['interest']} paper today. \n \n "
                         f"{paper_feed} \n \n "
                         f"Happy Reading \n "
-                        f"Ayse,"
+                        f"Ayşe Bat,"
                )
 
 
 def email_setting():
+    """Email settings for the app"""
     email = yagmail.SMTP(user='',
                          password='')
     return email
 
 
-#datetime.datetime.now().hour == 8 and datetime.datetime.now().minute == 18:
 while True:
     executing_time = datetime.time(8, 36, 00)
     if executing_time:
         print("Executing...")
-        # read the excel file
+        # read the Excel file
         df = pd.read_excel('people.xlsx')
         for index, row in df.iterrows():
             send_email()
