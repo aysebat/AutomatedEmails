@@ -7,8 +7,8 @@ import time
 
 #datetime.datetime.now().hour == 8 and datetime.datetime.now().minute == 18:
 while True:
-    executing_time = datetime.time(8, 30, 00)
-    if executing_time.hour:
+    executing_time = datetime.time(8, 36, 00)
+    if executing_time:
         print("Executing...")
         # read the excel file
         df = pd.read_excel('people.xlsx')
