@@ -26,11 +26,12 @@ def email_setting():
 
 
 while True:
-    executing_time = datetime.time(8, 36, 00)
+    executing_time = datetime.time(20, 53, 00)
     if executing_time:
         print("Executing...")
         # read the Excel file
-        df = pd.read_excel('people.xlsx')
+        df = pd.read_csv('people.csv', sep=';')
+        #print(df)
         for index, row in df.iterrows():
             send_email()
     time.sleep(60)
