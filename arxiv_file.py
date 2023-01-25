@@ -7,9 +7,7 @@ class PaperFeed:
         self.length = length
 
     def get_paper(self):
-        search = arxiv.Search(query=self.query,
-                              max_results=self.length,
-                              sort_by=arxiv.SortCriterion.SubmittedDate)
+        search = self._search_paper()
         paper_body = ''
         for result in search.results():
             paper_body = paper_body + \
@@ -19,6 +17,13 @@ class PaperFeed:
 
 
         return paper_body
+
+    def _search_paper(self):
+        search = arxiv.Search(query=self.query,
+                              max_results=self.length,
+                              sort_by=arxiv.SortCriterion.SubmittedDate)
+        return search
+
 
 if __name__=="__main__":
     paper = PaperFeed(query="neutrino", length=10)
